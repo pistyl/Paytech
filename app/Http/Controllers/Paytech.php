@@ -1,14 +1,8 @@
 <?php
 
-
-/**
- * Created by PhpStorm.
- * User: Intech Group
- * Date: 30/09/2017
- * Time: 14:35
- */
-
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 
 class PayTech
 {
