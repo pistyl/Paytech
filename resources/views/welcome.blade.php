@@ -24,7 +24,8 @@
                         <h5 class="card-title">{{ $product['name'] }}</h5>
                         <p class="card-text">{{ $product['description'] }}</p>
                         <p class="card-text"><strong>{{ number_format($product['price'], 0, ',', ' ') }} FCFA</strong></p>
-                        <button class="buy" onclick="buy(this)" data-item-id={{$product['id']}} class="btn btn-primary btn-sm">Acheter</button>
+                        <a href={{route('paiment.product')}}  class="btn btn-primary btn-sm">Acheter</a>
+                        {{-- <button class="buy" onclick="buy(this)" data-item-id={{$product['id']}} class="btn btn-primary btn-sm">Acheter</button> --}}
                     </div>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                     some_post_data_1          :   2, //will be sent to paiement.php page
                     some_post_data_3          :   4,
                 })).withOption({
-                    requestTokenUrl           :   {{route('paiment.abonnement')}},
+                    requestTokenUrl           :   {{route('paiment.product')}},
                     method              :   'POST',
                     headers             :   {
                         "Accept"          :    "text/html"

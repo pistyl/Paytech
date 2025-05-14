@@ -41,4 +41,4 @@ Route::post('/checkout/pay', function () {
 
 
     //Paiement
-    Route::post('/abonnement/paiement', [PaytechController::class, 'paiement'])->name('paiment.abonnement');
+    Route::get('/abonnement/paiement', [PaytechController::class, 'paiement'])->name('paiment.product');

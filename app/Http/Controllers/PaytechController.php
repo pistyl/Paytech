@@ -8,27 +8,26 @@ use Illuminate\Http\Request;
 class PaytechController extends Controller
 {
     public function paiement(Request $request){
-
-        // dd($request->boutique_id);
-        // $boutique = Boutique::where('id', $request->boutique_id)->first();
-        $product = [
+        $product =
             [
                 'id' => 1,
                 'name' => 'Téléphone Samsung Galaxy',
                 'description' => 'Un smartphone puissant avec de belles fonctionnalités.',
                 'price' => 150000,
                 'image' => 'https://nova.sn/34321-medium_default/samsung-galaxy-z-flip-6-12-go-de-ram-memoire-256-go.jpg',
-            ],
-        ];
+            ];
         $product['currency'] = "XOF";
 
-        $base_url  = "https://www.boutiquesenegal.com/";
-        $jsonResponse = (new PayTech(env("API_KEY"), env("API_SECRET")))->setQuery([
+        $base_url  = "https://www.example.com/";
+        $api_key = env("API_KEY");
+        $api_secret = env("API_SECRET");
+        $jsonResponse = (new PayTech($api_key, $api_secret))->setQuery([
                 'item_name' => $product['name'],
                 'item_price' => $product['price'],
                 'command_name' => "Paiement produit  de {$product['name']}",
             ])->setCustomeField([
                 'item_id' => $product['id'],
+            'time_command' => time(),
             ])
                 ->setTestMode(false)
                 ->setCurrency("XOF")
